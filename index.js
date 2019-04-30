@@ -19,7 +19,7 @@ let bingWebSearch = (query) => {
     res.on('end', () => {
       for (var header in res.headers) {
         if (header.startsWith('bingapis-') || header.startsWith('x-msedge-')) {
-          console.log(header + ': ' + res.headers[header])
+        //   console.log(header + ': ' + res.headers[header])
         }
       }
       console.log('\nBING API SEARCH:\n')
@@ -32,6 +32,10 @@ let bingWebSearch = (query) => {
   })
 }
 
-const query = process.argv[2] || 'Microsoft Cognitive Services'
+let argumentos = process.argv.slice(2)
+// eslint-disable-next-line no-unused-vars
+let [firstSearch, secondSearch] = argumentos
 
-bingWebSearch(query)
+argumentos.map(element => {
+  bingWebSearch(element)
+})
