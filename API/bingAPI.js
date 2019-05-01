@@ -17,8 +17,8 @@ module.exports = {
             //   console.log(header + ': ' + res.headers[header])
           }
         }
-        // console.log('BING API SEARCH:')
-        // console.dir(`${query}: LA CANTIDAD DE RESULTADOS ENCONTRADOS ES: ` + JSON.parse(body).webPages.totalEstimatedMatches, { colors: false, depth: null })
+        console.log('BING API SEARCH:')
+        console.dir(`${query}: LA CANTIDAD DE RESULTADOS ENCONTRADOS ES: ` + JSON.parse(body).webPages.totalEstimatedMatches, { colors: false, depth: null })
         onSucess(JSON.parse(body).webPages.totalEstimatedMatches)
       })
       res.on('error', e => {
