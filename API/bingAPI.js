@@ -2,7 +2,7 @@ const https = require('https')
 const config = require('../config/bingConfig')
 
 module.exports = {
-  bingWebSearch  (query) {
+  bingWebSearch  (query, onSucess) {
     https.get({
       hostname: 'api.cognitive.microsoft.com',
       path: '/bing/v7.0/search?q=' + encodeURIComponent(query),
@@ -17,8 +17,9 @@ module.exports = {
             //   console.log(header + ': ' + res.headers[header])
           }
         }
-        console.log('BING API SEARCH:')
-        console.dir(`${query}: LA CANTIDAD DE RESULTADOS ENCONTRADOS ES: ` + JSON.parse(body).webPages.totalEstimatedMatches, { colors: false, depth: null })
+        // console.log('BING API SEARCH:')
+        // console.dir(`${query}: LA CANTIDAD DE RESULTADOS ENCONTRADOS ES: ` + JSON.parse(body).webPages.totalEstimatedMatches, { colors: false, depth: null })
+        onSucess(JSON.parse(body).webPages.totalEstimatedMatches)
       })
       res.on('error', e => {
         console.log('Error: ' + e.message)
