@@ -11,7 +11,7 @@ module.exports = {
       }
       console.log('Google Search API')
       console.log(`${query}: LA CANTIDAD DE RESULTADOS ENCONTRADOS ES:` + JSON.stringify(resp.data.queries.request[0].totalResults))
-      onSucess(JSON.stringify(resp.data.queries.request[0].totalResults))
+      onSucess(resp.data.queries.request[0].totalResults)
     })
   }
 }
